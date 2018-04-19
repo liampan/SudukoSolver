@@ -1,0 +1,10 @@
+[0m[[0m[0minfo[0m] [0m[0m[32mSudukoSolverSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mEmptyCellFinder[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- must return the index of the empty cell in a square with one empty cell[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- must return the index of both empty cells in a square with two empty cells[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- must return the index of all empty cells in a square with some empty cells[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mMissingNumberFromSquare[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- must return an empty list for a square tht is complete[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- must return all the numbers for a square that is empty [0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- must return the number missing from a square that is missing one number [0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- must return the numbers missing from a square that is missing two numbers[0m[0m
