@@ -1,6 +1,55 @@
-[0m[[0m[31merror[0m] [0m[0m/home/Solve/src/main/scala/suduko/SudukoSolver.scala:24:5: type mismatch;[0m
-[0m[[0m[31merror[0m] [0m[0m found   : List[suduko.SudukoSolver.Number][0m
-[0m[[0m[31merror[0m] [0m[0m required: List[Int][0m
-[0m[[0m[31merror[0m] [0m[0m    differentNumbers[0m
-[0m[[0m[31merror[0m] [0m[0m    ^[0m
-[0m[[0m[31merror[0m] [0m[0mone error found[0m
+[0m[[0m[31merror[0m] [0m[0m/home/Solve/src/main/scala/suduko/SudukoSolver.scala:68:26: suduko.SudukoSolver.Grid does not take parameters[0m
+[0m[[0m[31merror[0m] [0m[0m      case 0 => List(grid(0),grid(3),grid(6))[0m
+[0m[[0m[31merror[0m] [0m[0m                         ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/Solve/src/main/scala/suduko/SudukoSolver.scala:68:34: suduko.SudukoSolver.Grid does not take parameters[0m
+[0m[[0m[31merror[0m] [0m[0m      case 0 => List(grid(0),grid(3),grid(6))[0m
+[0m[[0m[31merror[0m] [0m[0m                                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/Solve/src/main/scala/suduko/SudukoSolver.scala:68:42: suduko.SudukoSolver.Grid does not take parameters[0m
+[0m[[0m[31merror[0m] [0m[0m      case 0 => List(grid(0),grid(3),grid(6))[0m
+[0m[[0m[31merror[0m] [0m[0m                                         ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/Solve/src/main/scala/suduko/SudukoSolver.scala:69:26: suduko.SudukoSolver.Grid does not take parameters[0m
+[0m[[0m[31merror[0m] [0m[0m      case 1 => List(grid(1),grid(4),grid(7))[0m
+[0m[[0m[31merror[0m] [0m[0m                         ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/Solve/src/main/scala/suduko/SudukoSolver.scala:69:34: suduko.SudukoSolver.Grid does not take parameters[0m
+[0m[[0m[31merror[0m] [0m[0m      case 1 => List(grid(1),grid(4),grid(7))[0m
+[0m[[0m[31merror[0m] [0m[0m                                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/Solve/src/main/scala/suduko/SudukoSolver.scala:69:42: suduko.SudukoSolver.Grid does not take parameters[0m
+[0m[[0m[31merror[0m] [0m[0m      case 1 => List(grid(1),grid(4),grid(7))[0m
+[0m[[0m[31merror[0m] [0m[0m                                         ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/Solve/src/main/scala/suduko/SudukoSolver.scala:70:26: suduko.SudukoSolver.Grid does not take parameters[0m
+[0m[[0m[31merror[0m] [0m[0m      case 2 => List(grid(2),grid(5),grid(8))[0m
+[0m[[0m[31merror[0m] [0m[0m                         ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/Solve/src/main/scala/suduko/SudukoSolver.scala:70:34: suduko.SudukoSolver.Grid does not take parameters[0m
+[0m[[0m[31merror[0m] [0m[0m      case 2 => List(grid(2),grid(5),grid(8))[0m
+[0m[[0m[31merror[0m] [0m[0m                                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/Solve/src/main/scala/suduko/SudukoSolver.scala:70:42: suduko.SudukoSolver.Grid does not take parameters[0m
+[0m[[0m[31merror[0m] [0m[0m      case 2 => List(grid(2),grid(5),grid(8))[0m
+[0m[[0m[31merror[0m] [0m[0m                                         ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/Solve/src/main/scala/suduko/SudukoSolver.scala:73:35: suduko.SudukoSolver.Grid does not take parameters[0m
+[0m[[0m[31merror[0m] [0m[0m      if (squarePos < 3) List(grid(0),grid(1),grid(2))[0m
+[0m[[0m[31merror[0m] [0m[0m                                  ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/Solve/src/main/scala/suduko/SudukoSolver.scala:73:43: suduko.SudukoSolver.Grid does not take parameters[0m
+[0m[[0m[31merror[0m] [0m[0m      if (squarePos < 3) List(grid(0),grid(1),grid(2))[0m
+[0m[[0m[31merror[0m] [0m[0m                                          ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/Solve/src/main/scala/suduko/SudukoSolver.scala:73:51: suduko.SudukoSolver.Grid does not take parameters[0m
+[0m[[0m[31merror[0m] [0m[0m      if (squarePos < 3) List(grid(0),grid(1),grid(2))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                  ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/Solve/src/main/scala/suduko/SudukoSolver.scala:74:40: suduko.SudukoSolver.Grid does not take parameters[0m
+[0m[[0m[31merror[0m] [0m[0m      else if (squarePos < 6) List(grid(3),grid(4),grid(5))[0m
+[0m[[0m[31merror[0m] [0m[0m                                       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/Solve/src/main/scala/suduko/SudukoSolver.scala:74:48: suduko.SudukoSolver.Grid does not take parameters[0m
+[0m[[0m[31merror[0m] [0m[0m      else if (squarePos < 6) List(grid(3),grid(4),grid(5))[0m
+[0m[[0m[31merror[0m] [0m[0m                                               ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/Solve/src/main/scala/suduko/SudukoSolver.scala:74:56: suduko.SudukoSolver.Grid does not take parameters[0m
+[0m[[0m[31merror[0m] [0m[0m      else if (squarePos < 6) List(grid(3),grid(4),grid(5))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/Solve/src/main/scala/suduko/SudukoSolver.scala:75:21: suduko.SudukoSolver.Grid does not take parameters[0m
+[0m[[0m[31merror[0m] [0m[0m      else List(grid(6),grid(7),grid(8))[0m
+[0m[[0m[31merror[0m] [0m[0m                    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/Solve/src/main/scala/suduko/SudukoSolver.scala:75:29: suduko.SudukoSolver.Grid does not take parameters[0m
+[0m[[0m[31merror[0m] [0m[0m      else List(grid(6),grid(7),grid(8))[0m
+[0m[[0m[31merror[0m] [0m[0m                            ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/Solve/src/main/scala/suduko/SudukoSolver.scala:75:37: suduko.SudukoSolver.Grid does not take parameters[0m
+[0m[[0m[31merror[0m] [0m[0m      else List(grid(6),grid(7),grid(8))[0m
+[0m[[0m[31merror[0m] [0m[0m                                    ^[0m
+[0m[[0m[31merror[0m] [0m[0m18 errors found[0m

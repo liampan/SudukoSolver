@@ -8,3 +8,13 @@
 [0m[[0m[0minfo[0m] [0m[0m[32m- must return all the numbers for a square that is empty [0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- must return the number missing from a square that is missing one number [0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- must return the numbers missing from a square that is missing two numbers[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- must return the numbers missing from a unordered square that is missing two numbers[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mmissingNumbersFromColumn[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- must return a all numbera from a given 3 empty squares, and a column position[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- must return missing numbers from a given 3 squares, and a column position[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mmissing number of row [0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- must return missing numbers from a given 3 squares, and a column position[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mvenn diagram for cell[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- must return the missing number from a grid that contains the rows neccicary to attain that number[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- must Row set [0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- must column Set[0m[0m
