@@ -2,6 +2,8 @@ package suduko
 
 import suduko._
 
+import scala.annotation.tailrec
+
 object SudukoSolver extends App {
 
 
@@ -94,6 +96,43 @@ object SudukoSolver extends App {
     grid.copy(squares = asdfg)
   }
 
+  def parser2(grid : Grid) : Grid = {
+
+    // generate once here at starter
+
+    @tailrec
+    def parserHelper(grid : Grid, counter : Int) : Grid = {
+      if (counter == 82) {
+        reset
+        grid
+      } else {
+        val gps = GPS
+        val square = gps._1
+        val cell = gps._2
+
+        def numberAtCell = grid.squares(square).numbers(cell).num.isDefined
+
+        if (numberAtCell) {
+          parserHelper(grid, counter+1)
+        } else {
+          def possibleNumbersForCell = vennDiagramForCell(grid, square, cell)
+          def canGenerateNumberForCell = possibleNumbersForCell.num.isDefined
+
+          if (canGenerateNumberForCell) {
+            val numberPlacedOnGrid = placer(grid, square, cell, possibleNumbersForCell)
+            parserHelper(numberPlacedOnGrid, 0)
+          } else {
+            // can't find a number, check next cells?
+            parserHelper(grid, counter+1)
+          }
+        }
+      }
+    }
+
+    // pass start gps through
+    parserHelper(grid, 0)
+  }
+
   def parser(grid: Grid) : Grid = {
     val gps = GPS
     val Squ = gps._1
@@ -149,15 +188,26 @@ object SudukoSolver extends App {
   }
 
   def printBoard(grid: Grid) ={
-    val numSquares = grid.squares.map(x => x.numbers.map(y => if(y.num.isDefined){Console.RED +s"${y.num.get.toString}" + Console.RESET} else "X"))
-    val colums = numSquares.transpose.transpose.zipWithIndex
-    println(colums.map(x => s"\n ${x._2} =  ${x._1}"))
+    val numSquares = grid.squares.map(x => x.numbers.map(y => if(y.num.isDefined){Console.RED +s"${y.num.get.toString}" + Console.RESET} else "_"))
+    println({
+      numSquares(0).take(3).mkString(" ") +" | " + numSquares(1).take(3).mkString(" ") +" | " + numSquares(2).take(3).mkString(" ") +"\n" +
+        numSquares(0).slice(3,6).mkString(" ") +" | " + numSquares(1).slice(3,6).mkString(" ") +" | " + numSquares(2).slice(3,6).mkString(" ") +"\n" +
+        numSquares(0).takeRight(3).mkString(" ") +" | " + numSquares(1).takeRight(3).mkString(" ") +" | " + numSquares(2).takeRight(3).mkString(" ") +"\n" +
+      "------+-------+------ \n" +
+      numSquares(3).take(3).mkString(" ") +" | " + numSquares(4).take(3).mkString(" ") +" | " + numSquares(5).take(3).mkString(" ") +"\n" +
+        numSquares(3).slice(3,6).mkString(" ") +" | " + numSquares(4).slice(3,6).mkString(" ") +" | " + numSquares(5).slice(3,6).mkString(" ") +"\n" +
+        numSquares(3).takeRight(3).mkString(" ") +" | " + numSquares(4).takeRight(3).mkString(" ") +" | " + numSquares(5).takeRight(3).mkString(" ") +"\n" +
+        "------+-------+------ \n" +
+      numSquares(6).take(3).mkString(" ") +" | " + numSquares(7).take(3).mkString(" ") +" | " + numSquares(8).take(3).mkString(" ") +"\n" +
+        numSquares(6).slice(3,6).mkString(" ") +" | " + numSquares(7).slice(3,6).mkString(" ") +" | " + numSquares(8).slice(3,6).mkString(" ") +"\n" +
+        numSquares(6).takeRight(3).mkString(" ") +" | " + numSquares(7).takeRight(3).mkString(" ") +" | " + numSquares(8).takeRight(3).mkString(" ") +"\n"
+    })
   }
 
   def run(input: String) : Unit = {
     val theGrid = readyInput(input)
     printBoard(theGrid)
-    val finished = parser(theGrid)
+    val finished = parser2(theGrid)
     printBoard(finished)
   }
 

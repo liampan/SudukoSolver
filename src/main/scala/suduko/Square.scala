@@ -12,4 +12,13 @@ case class Square(numbers : List[Number]){
   def bottom :List[Number] ={ this.numbers.takeRight(3)}
 
 
+  def render : String = {
+    s"""
+       |$top
+       |$middle
+       |$bottom
+     """.stripMargin
+  }
+
+
 }
