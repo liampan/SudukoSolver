@@ -22,25 +22,9 @@ class SudukoSolverSpec extends WordSpec with MustMatchers{
     Square(tuple._2++tuple._1)
   }
 
-  "EmptyCellFinder" must {
-
-    "return the index of the empty cell in a square with one empty cell" in {
-      val test = Square(List(Number(Some(1)), Number(None)))
-
-      SudukoSolver.findEmptyCell(test) mustEqual List(1)
-    }
-
-    "return the index of both empty cells in a square with two empty cells" in {
-
-      SudukoSolver.findEmptyCell(Square(List(Number(Some(1)), Number(None), Number(None)))) mustEqual List(1, 2)
-    }
-
-    "return the index of all empty cells in a square with some empty cells" in {
-
-      SudukoSolver.findEmptyCell(Square(List(Number(None), Number(None), Number(Some(9))))) mustEqual List(0, 1)
-    }
+  def squareBuilderOnlyTopLeft(topLeftNum : Int) :Square ={
+    Square(squareBuilderNone.numbers.updated(0,Number(Some(topLeftNum))))
   }
-
 
   "MissingNumberFromSquare" must {
 
@@ -165,24 +149,73 @@ class SudukoSolverSpec extends WordSpec with MustMatchers{
 
   "venn diagram for cell" must {
 
-    val pan :Grid = Grid(List(squareBuilderWithOneMissing(0,5),squareBuilder(3),squareBuilder(6),squareBuilder(1),squareBuilderNone,squareBuilderNone,squareBuilder(2)))
+    val pan :Grid = Grid(List(squareBuilderWithOneMissing(0,5),squareBuilder(3),squareBuilder(6),squareBuilder(1),squareBuilderNone,squareBuilderNone,squareBuilder(2),squareBuilderNone,squareBuilderNone))
 
     "return the missing number from a grid that contains the rows neccicary to attain that number" in  {
 
-      
-      SudukoSolver.vennDiagramForCell(pan,0,4) mustEqual Set(5)
 
+      SudukoSolver.vennDiagramForCell(pan,0,4) mustEqual Number(Some(5))
   }
 
-    "Row set " in {
+    "return None from a grid that contains the rows that cant attain a definate number" in  {
 
-      SudukoSolver.missingNumbersFromRow(pan.squares.take(3),1) mustEqual Set(5)
+
+      SudukoSolver.vennDiagramForCell(pan,4,3) mustEqual Number(None)
     }
 
-    "column Set" in {
+    "return None from a row that is full and can not attain a number" in  {
 
-      SudukoSolver.missingNumbersFromColumn(List(pan.squares(0),pan.squares(3),pan.squares(6)),1) mustEqual Set(5)
+
+      SudukoSolver.vennDiagramForCell(pan,0,0) mustEqual Number(None)
     }
 
   }
+  "placer" must {
+
+    val emptyGrid : Grid = Grid(List.range(0,8).map(x => squareBuilderNone))
+    val topleftGrid : Grid = Grid(List(squareBuilderOnlyTopLeft(5))++List.range(1,8).map(x => squareBuilderNone))
+
+    "given an empty grid place a number(some(5)) in the top left corner" in {
+
+      SudukoSolver.placer(emptyGrid,0,0,Number(Some(5))) mustEqual topleftGrid
+    }
+  }
+
+  "parser" must {
+
+    val complete: Grid = Grid(List(squareBuilder(0), squareBuilder(3), squareBuilder(6),
+                                    squareBuilder(1), squareBuilder(4), squareBuilder(7),
+                                      squareBuilder(2), squareBuilder(5), squareBuilder(8)))
+
+    "retrun a complete suduko when given a complete suduko" in {
+
+      SudukoSolver.parser(complete) mustEqual complete
+    }
+
+
+    "replace the first missing number in (0,4) that is a 5" in {
+
+      val oneMissing: Grid = Grid(List(squareBuilderWithOneMissing(0,4), squareBuilder(3), squareBuilder(6), squareBuilder(1), squareBuilder(4), squareBuilder(7), squareBuilder(2), squareBuilder(5), squareBuilder(8)))
+
+
+      SudukoSolver.parser(oneMissing) mustEqual complete
+    }
+
+    "replace two missing numbers to complete a sudko" in  {
+
+      val twoMissing : Grid = Grid(List(squareBuilderWithOneMissing(0,4), squareBuilder(3), squareBuilder(6), squareBuilder(1), squareBuilder(4), squareBuilder(7), squareBuilder(2), squareBuilder(5), squareBuilderWithOneMissing(8,3)))
+
+      SudukoSolver.parser(twoMissing) mustEqual complete
+    }
+  }
+
+
+  "ready input" must {
+
+    "find all . and numbers in a string" in {
+
+      SudukoSolver.readyInput(" 2 4 . | . . 1 | 5 . .") mustEqual List("2", "4", ".", ".", ".", "1", "5", ".", ".")
+    }
+  }
+
 }

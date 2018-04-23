@@ -1,8 +1,4 @@
 [0m[[0m[0minfo[0m] [0m[0m[32mSudukoSolverSpec:[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mEmptyCellFinder[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- must return the index of the empty cell in a square with one empty cell[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- must return the index of both empty cells in a square with two empty cells[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- must return the index of all empty cells in a square with some empty cells[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mMissingNumberFromSquare[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- must return an empty list for a square tht is complete[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- must return all the numbers for a square that is empty [0m[0m
@@ -16,5 +12,21 @@
 [0m[[0m[0minfo[0m] [0m[0m[32m- must return missing numbers from a given 3 squares, and a column position[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mvenn diagram for cell[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- must return the missing number from a grid that contains the rows neccicary to attain that number[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- must Row set [0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- must column Set[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- must return None from a grid that contains the rows that cant attain a definate number[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- must return None from a row that is full and can not attain a number[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mplacer[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- must given an empty grid place a number(some(5)) in the top left corner[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mparser[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31msuduko.SudukoSolverSpec *** ABORTED ***[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  java.lang.StackOverflowError:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at suduko.SudukoSolver$.cellPlacer_$eq(SudukoSolver.scala:16)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at suduko.SudukoSolver$.GPS(SudukoSolver.scala:20)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at suduko.SudukoSolver$.parser(SudukoSolver.scala:98)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at suduko.SudukoSolver$.parser(SudukoSolver.scala:101)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at suduko.SudukoSolver$.parser(SudukoSolver.scala:101)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at suduko.SudukoSolver$.parser(SudukoSolver.scala:101)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at suduko.SudukoSolver$.parser(SudukoSolver.scala:101)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at suduko.SudukoSolver$.parser(SudukoSolver.scala:101)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at suduko.SudukoSolver$.parser(SudukoSolver.scala:101)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at suduko.SudukoSolver$.parser(SudukoSolver.scala:101)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  ...[0m[0m

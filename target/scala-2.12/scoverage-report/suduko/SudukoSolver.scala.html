@@ -1,0 +1,2497 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title id="title">
+          suduko/SudukoSolver.scala.html
+        </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/css/theme.default.min.css" type="text/css"/><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/js/jquery.tablesorter.min.js"></script><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" type="text/css"/><script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script><script type="text/javascript">
+        $(document).ready(function() {$(".tablesorter").tablesorter();});
+      </script>
+        <style>
+          table.codegrid { font-family: monospace; font-size: 12px; width: auto!important; }table.statementlist { width: auto!important; font-size: 13px; } table.codegrid td { padding: 0!important; border: 0!important } table td.linenumber { width: 40px!important; } 
+        </style>
+      </head>
+      <body style="font-family: monospace;">
+        <ul class="nav nav-tabs">
+          <li>
+            <a href="#codegrid" data-toggle="tab">Codegrid</a>
+          </li>
+          <li>
+            <a href="#statementlist" data-toggle="tab">Statement List</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="codegrid">
+            <pre style='font-size: 12pt; font-family: courier;'>1 <span style=''>package suduko
+</span>2 <span style=''>
+</span>3 <span style=''>object SudukoSolver extends App {
+</span>4 <span style=''>
+</span>5 <span style=''>
+</span>6 <span style=''>
+</span>7 <span style=''>  def findEmptyCell(square: Square):List[Int] ={
+</span>8 <span style=''>
+</span>9 <span style=''>    // do i need this any more?
+</span>10 <span style=''>
+</span>11 <span style=''>    </span><span style='background: #AEF1AE'>square
+</span>12 <span style=''></span><span style='background: #AEF1AE'>      .numbers
+</span>13 <span style=''></span><span style='background: #AEF1AE'>      .zipWithIndex
+</span>14 <span style=''></span><span style='background: #AEF1AE'>      .filter(x =&gt; x._1 ==Number(None))
+</span>15 <span style=''></span><span style='background: #AEF1AE'>      .map(_._2)</span><span style=''>
+</span>16 <span style=''>  }
+</span>17 <span style=''>
+</span>18 <span style=''>  def missingNumberFromSquareFinder(square: Square):Set[Int] ={
+</span>19 <span style=''>    val foundNumbers = </span><span style='background: #AEF1AE'>square.numbers.filter(x =&gt; x.num.isDefined)</span><span style=''>
+</span>20 <span style=''>    val allNumbers = </span><span style='background: #AEF1AE'>List(1,2,3,4,5,6,7,8,9)</span><span style=''>
+</span>21 <span style=''>    val differentNumbers = </span><span style='background: #AEF1AE'>allNumbers.diff(foundNumbers.map(_.num.get))</span><span style=''>
+</span>22 <span style=''>    </span><span style='background: #AEF1AE'>differentNumbers.toSet</span><span style=''>
+</span>23 <span style=''>  }
+</span>24 <span style=''>
+</span>25 <span style=''>  def missingNumbersFromRow(threeSquares : List[Square], rowPos : Int) :Set[Int]= {
+</span>26 <span style=''>    val allNumbers = </span><span style='background: #AEF1AE'>List(1,2,3,4,5,6,7,8,9)</span><span style=''>
+</span>27 <span style=''>    rowPos match {
+</span>28 <span style=''>      case 0 =&gt; val out = </span><span style='background: #F0ADAD'>threeSquares.flatMap(_.top).filter(_.num.isDefined)</span><span style=''>
+</span>29 <span style=''>        </span><span style='background: #F0ADAD'>allNumbers.diff(out.map(_.num.get)).toSet</span><span style=''>
+</span>30 <span style=''>      case 1 =&gt; val out = </span><span style='background: #AEF1AE'>threeSquares.flatMap(_.middle).filter(_.num.isDefined)</span><span style=''>
+</span>31 <span style=''>        </span><span style='background: #AEF1AE'>allNumbers.diff(out.map(_.num.get)).toSet</span><span style=''>
+</span>32 <span style=''>      case 2 =&gt; val out = </span><span style='background: #F0ADAD'>threeSquares.flatMap(_.bottom).filter(_.num.isDefined)</span><span style=''>
+</span>33 <span style=''>        </span><span style='background: #F0ADAD'>allNumbers.diff(out.map(_.num.get)).toSet</span><span style=''>
+</span>34 <span style=''>    }
+</span>35 <span style=''>  }
+</span>36 <span style=''>
+</span>37 <span style=''>  def missingNumbersFromColumn(threeSquares : List[Square], columnPos : Int) :Set[Int]= {
+</span>38 <span style=''>    val allNumbers = </span><span style='background: #AEF1AE'>List(1,2,3,4,5,6,7,8,9)</span><span style=''>
+</span>39 <span style=''>    columnPos match {
+</span>40 <span style=''>      case 0 =&gt; val out = </span><span style='background: #AEF1AE'>threeSquares.flatMap(_.left).filter(_.num.isDefined)</span><span style=''>
+</span>41 <span style=''>        </span><span style='background: #AEF1AE'>allNumbers.diff(out.map(_.num.get)).toSet</span><span style=''>
+</span>42 <span style=''>      case 1 =&gt;
+</span>43 <span style=''>        val out = </span><span style='background: #AEF1AE'>threeSquares.flatMap(_.centre)</span><span style=''>
+</span>44 <span style=''>        val outer = </span><span style='background: #AEF1AE'>out.filter(_.num.isDefined).map(_.num.get)</span><span style=''>
+</span>45 <span style=''>        </span><span style='background: #AEF1AE'>allNumbers.diff(outer).toSet</span><span style=''>
+</span>46 <span style=''>      case 2 =&gt; val out = </span><span style='background: #F0ADAD'>threeSquares.flatMap(_.right).filter(_.num.isDefined)</span><span style=''>
+</span>47 <span style=''>        </span><span style='background: #F0ADAD'>allNumbers.diff(out.map(_.num.get)).toSet</span><span style=''>
+</span>48 <span style=''>      }
+</span>49 <span style=''>  }
+</span>50 <span style=''>
+</span>51 <span style=''>  def vennDiagramForCell(grid: Grid,squarePos : Int, numberPos : Int) : Set[Int]= {
+</span>52 <span style=''>    val columnThreeSquare = </span><span style='background: #AEF1AE'>squarePos % 3</span><span style=''> match {
+</span>53 <span style=''>      case 0 =&gt; </span><span style='background: #AEF1AE'>List(grid.squares(0),grid.squares(3),grid.squares(6))</span><span style=''>
+</span>54 <span style=''>      case 1 =&gt; </span><span style='background: #F0ADAD'>List(grid.squares(1),grid.squares(4),grid.squares(7))</span><span style=''>
+</span>55 <span style=''>      case 2 =&gt; </span><span style='background: #F0ADAD'>List(grid.squares(2),grid.squares(5),grid.squares(8))</span><span style=''>
+</span>56 <span style=''>    }
+</span>57 <span style=''>    val rowThreeSquare : List[Square] = {
+</span>58 <span style=''>      if (</span><span style='background: #AEF1AE'>squarePos &lt; 3</span><span style=''>)      </span><span style='background: #AEF1AE'>List(grid.squares(0),grid.squares(1),grid.squares(2))</span><span style=''>
+</span>59 <span style=''>      else </span><span style='background: #F0ADAD'>if (squarePos &lt; 6) List(grid.squares(3),grid.squares(4),grid.squares(5))
+</span>60 <span style=''></span><span style='background: #F0ADAD'>      else                     List(grid.squares(6),grid.squares(7),grid.squares(8))</span><span style=''>
+</span>61 <span style=''>    }
+</span>62 <span style=''>    val rowPos = {
+</span>63 <span style=''>      if (</span><span style='background: #AEF1AE'>numberPos &lt; 3</span><span style=''>){</span><span style='background: #F0ADAD'>0</span><span style=''>}
+</span>64 <span style=''>      else </span><span style='background: #AEF1AE'>if (numberPos &lt; 6){1}
+</span>65 <span style=''></span><span style='background: #AEF1AE'>      else {</span><span style='background: #F0ADAD'>2</span><span style='background: #AEF1AE'>}</span><span style=''>
+</span>66 <span style=''>    }
+</span>67 <span style=''>    val squareSet = </span><span style='background: #AEF1AE'>missingNumberFromSquareFinder(grid.squares(squarePos))</span><span style=''>
+</span>68 <span style=''>    val columnSet = </span><span style='background: #AEF1AE'>missingNumbersFromColumn(columnThreeSquare,numberPos%3)</span><span style=''>
+</span>69 <span style=''>    val rowSet = </span><span style='background: #AEF1AE'>missingNumbersFromRow(rowThreeSquare,rowPos)</span><span style=''>
+</span>70 <span style=''>    </span><span style='background: #AEF1AE'>squareSet.intersect(columnSet).intersect(rowSet)</span><span style=''>
+</span>71 <span style=''>  }
+</span>72 <span style=''>
+</span>73 <span style=''>  def placer() = {</span><span style='background: #F0ADAD'>???</span><span style=''>}
+</span>74 <span style=''>
+</span>75 <span style=''>  def parser() = {</span><span style='background: #F0ADAD'>???</span><span style=''>}
+</span>76 <span style=''>
+</span>77 <span style=''>}
+</span></pre>
+          </div>
+          <div class="tab-pane" id="statementlist">
+            <table cellspacing="0" cellpadding="0" class="table statementlist">
+      <tr>
+        <th>Line</th>
+        <th>Stmt Id</th>
+        <th>Pos</th>
+        <th>Tree</th>
+        <th>Symbol</th>
+        <th>Code</th>
+      </tr><tr>
+        <td>
+          13
+        </td>
+        <td>
+          16
+        </td>
+        <td>
+          169
+          -
+          169
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.collection.immutable.List.canBuildFrom
+        </td>
+        <td style="background: #AEF1AE">
+          immutable.this.List.canBuildFrom[(suduko.Number, Int)]
+        </td>
+      </tr><tr>
+        <td>
+          14
+        </td>
+        <td>
+          17
+        </td>
+        <td>
+          215
+          -
+          219
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.None
+        </td>
+        <td style="background: #AEF1AE">
+          scala.None
+        </td>
+      </tr><tr>
+        <td>
+          14
+        </td>
+        <td>
+          19
+        </td>
+        <td>
+          201
+          -
+          220
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.lang.Object.==
+        </td>
+        <td style="background: #AEF1AE">
+          x._1.==(Number.apply(scala.None))
+        </td>
+      </tr><tr>
+        <td>
+          14
+        </td>
+        <td>
+          18
+        </td>
+        <td>
+          208
+          -
+          220
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          suduko.Number.apply
+        </td>
+        <td style="background: #AEF1AE">
+          Number.apply(scala.None)
+        </td>
+      </tr><tr>
+        <td>
+          15
+        </td>
+        <td>
+          20
+        </td>
+        <td>
+          233
+          -
+          237
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Tuple2._2
+        </td>
+        <td style="background: #AEF1AE">
+          x$1._2
+        </td>
+      </tr><tr>
+        <td>
+          15
+        </td>
+        <td>
+          22
+        </td>
+        <td>
+          140
+          -
+          238
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          scala.collection.immutable.List.map
+        </td>
+        <td style="background: #AEF1AE">
+          square.numbers.zipWithIndex[suduko.Number, List[(suduko.Number, Int)]](immutable.this.List.canBuildFrom[(suduko.Number, Int)]).filter(((x: (suduko.Number, Int)) =&gt; x._1.==(Number.apply(scala.None)))).map[Int, List[Int]](((x$1: (suduko.Number, Int)) =&gt; x$1._2))(immutable.this.List.canBuildFrom[Int])
+        </td>
+      </tr><tr>
+        <td>
+          15
+        </td>
+        <td>
+          21
+        </td>
+        <td>
+          232
+          -
+          232
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.collection.immutable.List.canBuildFrom
+        </td>
+        <td style="background: #AEF1AE">
+          immutable.this.List.canBuildFrom[Int]
+        </td>
+      </tr><tr>
+        <td>
+          19
+        </td>
+        <td>
+          23
+        </td>
+        <td>
+          358
+          -
+          373
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Option.isDefined
+        </td>
+        <td style="background: #AEF1AE">
+          x.num.isDefined
+        </td>
+      </tr><tr>
+        <td>
+          19
+        </td>
+        <td>
+          24
+        </td>
+        <td>
+          331
+          -
+          374
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.TraversableLike.filter
+        </td>
+        <td style="background: #AEF1AE">
+          square.numbers.filter(((x: suduko.Number) =&gt; x.num.isDefined))
+        </td>
+      </tr><tr>
+        <td>
+          20
+        </td>
+        <td>
+          25
+        </td>
+        <td>
+          396
+          -
+          419
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.immutable.List.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.collection.immutable.List.apply[Int](1, 2, 3, 4, 5, 6, 7, 8, 9)
+        </td>
+      </tr><tr>
+        <td>
+          21
+        </td>
+        <td>
+          26
+        </td>
+        <td>
+          480
+          -
+          489
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Option.get
+        </td>
+        <td style="background: #AEF1AE">
+          x$2.num.get
+        </td>
+      </tr><tr>
+        <td>
+          21
+        </td>
+        <td>
+          29
+        </td>
+        <td>
+          447
+          -
+          491
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.SeqLike.diff
+        </td>
+        <td style="background: #AEF1AE">
+          allNumbers.diff[Int](foundNumbers.map[Int, List[Int]](((x$2: suduko.Number) =&gt; x$2.num.get))(immutable.this.List.canBuildFrom[Int]))
+        </td>
+      </tr><tr>
+        <td>
+          21
+        </td>
+        <td>
+          28
+        </td>
+        <td>
+          463
+          -
+          490
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          scala.collection.immutable.List.map
+        </td>
+        <td style="background: #AEF1AE">
+          foundNumbers.map[Int, List[Int]](((x$2: suduko.Number) =&gt; x$2.num.get))(immutable.this.List.canBuildFrom[Int])
+        </td>
+      </tr><tr>
+        <td>
+          21
+        </td>
+        <td>
+          27
+        </td>
+        <td>
+          479
+          -
+          479
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.collection.immutable.List.canBuildFrom
+        </td>
+        <td style="background: #AEF1AE">
+          immutable.this.List.canBuildFrom[Int]
+        </td>
+      </tr><tr>
+        <td>
+          22
+        </td>
+        <td>
+          30
+        </td>
+        <td>
+          496
+          -
+          518
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.collection.TraversableOnce.toSet
+        </td>
+        <td style="background: #AEF1AE">
+          differentNumbers.toSet[Int]
+        </td>
+      </tr><tr>
+        <td>
+          26
+        </td>
+        <td>
+          31
+        </td>
+        <td>
+          629
+          -
+          652
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.immutable.List.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.collection.immutable.List.apply[Int](1, 2, 3, 4, 5, 6, 7, 8, 9)
+        </td>
+      </tr><tr>
+        <td>
+          28
+        </td>
+        <td>
+          32
+        </td>
+        <td>
+          719
+          -
+          724
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          suduko.Square.top
+        </td>
+        <td style="background: #F0ADAD">
+          x$3.top
+        </td>
+      </tr><tr>
+        <td>
+          28
+        </td>
+        <td>
+          35
+        </td>
+        <td>
+          698
+          -
+          749
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.TraversableLike.filter
+        </td>
+        <td style="background: #F0ADAD">
+          threeSquares.flatMap[suduko.Number, List[suduko.Number]](((x$3: suduko.Square) =&gt; x$3.top))(immutable.this.List.canBuildFrom[suduko.Number]).filter(((x$4: suduko.Number) =&gt; x$4.num.isDefined))
+        </td>
+      </tr><tr>
+        <td>
+          28
+        </td>
+        <td>
+          34
+        </td>
+        <td>
+          733
+          -
+          748
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Option.isDefined
+        </td>
+        <td style="background: #F0ADAD">
+          x$4.num.isDefined
+        </td>
+      </tr><tr>
+        <td>
+          28
+        </td>
+        <td>
+          33
+        </td>
+        <td>
+          718
+          -
+          718
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.collection.immutable.List.canBuildFrom
+        </td>
+        <td style="background: #F0ADAD">
+          immutable.this.List.canBuildFrom[suduko.Number]
+        </td>
+      </tr><tr>
+        <td>
+          29
+        </td>
+        <td>
+          38
+        </td>
+        <td>
+          774
+          -
+          792
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          scala.collection.immutable.List.map
+        </td>
+        <td style="background: #F0ADAD">
+          out.map[Int, List[Int]](((x$5: suduko.Number) =&gt; x$5.num.get))(immutable.this.List.canBuildFrom[Int])
+        </td>
+      </tr><tr>
+        <td>
+          29
+        </td>
+        <td>
+          37
+        </td>
+        <td>
+          781
+          -
+          781
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.collection.immutable.List.canBuildFrom
+        </td>
+        <td style="background: #F0ADAD">
+          immutable.this.List.canBuildFrom[Int]
+        </td>
+      </tr><tr>
+        <td>
+          29
+        </td>
+        <td>
+          36
+        </td>
+        <td>
+          782
+          -
+          791
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Option.get
+        </td>
+        <td style="background: #F0ADAD">
+          x$5.num.get
+        </td>
+      </tr><tr>
+        <td>
+          29
+        </td>
+        <td>
+          39
+        </td>
+        <td>
+          758
+          -
+          799
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.collection.TraversableOnce.toSet
+        </td>
+        <td style="background: #F0ADAD">
+          allNumbers.diff[Int](out.map[Int, List[Int]](((x$5: suduko.Number) =&gt; x$5.num.get))(immutable.this.List.canBuildFrom[Int])).toSet[Int]
+        </td>
+      </tr><tr>
+        <td>
+          30
+        </td>
+        <td>
+          41
+        </td>
+        <td>
+          846
+          -
+          846
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.collection.immutable.List.canBuildFrom
+        </td>
+        <td style="background: #AEF1AE">
+          immutable.this.List.canBuildFrom[suduko.Number]
+        </td>
+      </tr><tr>
+        <td>
+          30
+        </td>
+        <td>
+          40
+        </td>
+        <td>
+          847
+          -
+          855
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          suduko.Square.middle
+        </td>
+        <td style="background: #AEF1AE">
+          x$6.middle
+        </td>
+      </tr><tr>
+        <td>
+          30
+        </td>
+        <td>
+          43
+        </td>
+        <td>
+          826
+          -
+          880
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.TraversableLike.filter
+        </td>
+        <td style="background: #AEF1AE">
+          threeSquares.flatMap[suduko.Number, List[suduko.Number]](((x$6: suduko.Square) =&gt; x$6.middle))(immutable.this.List.canBuildFrom[suduko.Number]).filter(((x$7: suduko.Number) =&gt; x$7.num.isDefined))
+        </td>
+      </tr><tr>
+        <td>
+          30
+        </td>
+        <td>
+          42
+        </td>
+        <td>
+          864
+          -
+          879
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Option.isDefined
+        </td>
+        <td style="background: #AEF1AE">
+          x$7.num.isDefined
+        </td>
+      </tr><tr>
+        <td>
+          31
+        </td>
+        <td>
+          44
+        </td>
+        <td>
+          913
+          -
+          922
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Option.get
+        </td>
+        <td style="background: #AEF1AE">
+          x$8.num.get
+        </td>
+      </tr><tr>
+        <td>
+          31
+        </td>
+        <td>
+          47
+        </td>
+        <td>
+          889
+          -
+          930
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.collection.TraversableOnce.toSet
+        </td>
+        <td style="background: #AEF1AE">
+          allNumbers.diff[Int](out.map[Int, List[Int]](((x$8: suduko.Number) =&gt; x$8.num.get))(immutable.this.List.canBuildFrom[Int])).toSet[Int]
+        </td>
+      </tr><tr>
+        <td>
+          31
+        </td>
+        <td>
+          46
+        </td>
+        <td>
+          905
+          -
+          923
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          scala.collection.immutable.List.map
+        </td>
+        <td style="background: #AEF1AE">
+          out.map[Int, List[Int]](((x$8: suduko.Number) =&gt; x$8.num.get))(immutable.this.List.canBuildFrom[Int])
+        </td>
+      </tr><tr>
+        <td>
+          31
+        </td>
+        <td>
+          45
+        </td>
+        <td>
+          912
+          -
+          912
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.collection.immutable.List.canBuildFrom
+        </td>
+        <td style="background: #AEF1AE">
+          immutable.this.List.canBuildFrom[Int]
+        </td>
+      </tr><tr>
+        <td>
+          32
+        </td>
+        <td>
+          50
+        </td>
+        <td>
+          995
+          -
+          1010
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Option.isDefined
+        </td>
+        <td style="background: #F0ADAD">
+          x$10.num.isDefined
+        </td>
+      </tr><tr>
+        <td>
+          32
+        </td>
+        <td>
+          49
+        </td>
+        <td>
+          977
+          -
+          977
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.collection.immutable.List.canBuildFrom
+        </td>
+        <td style="background: #F0ADAD">
+          immutable.this.List.canBuildFrom[suduko.Number]
+        </td>
+      </tr><tr>
+        <td>
+          32
+        </td>
+        <td>
+          48
+        </td>
+        <td>
+          978
+          -
+          986
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          suduko.Square.bottom
+        </td>
+        <td style="background: #F0ADAD">
+          x$9.bottom
+        </td>
+      </tr><tr>
+        <td>
+          32
+        </td>
+        <td>
+          51
+        </td>
+        <td>
+          957
+          -
+          1011
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.TraversableLike.filter
+        </td>
+        <td style="background: #F0ADAD">
+          threeSquares.flatMap[suduko.Number, List[suduko.Number]](((x$9: suduko.Square) =&gt; x$9.bottom))(immutable.this.List.canBuildFrom[suduko.Number]).filter(((x$10: suduko.Number) =&gt; x$10.num.isDefined))
+        </td>
+      </tr><tr>
+        <td>
+          33
+        </td>
+        <td>
+          53
+        </td>
+        <td>
+          1043
+          -
+          1043
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.collection.immutable.List.canBuildFrom
+        </td>
+        <td style="background: #F0ADAD">
+          immutable.this.List.canBuildFrom[Int]
+        </td>
+      </tr><tr>
+        <td>
+          33
+        </td>
+        <td>
+          55
+        </td>
+        <td>
+          1020
+          -
+          1061
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.collection.TraversableOnce.toSet
+        </td>
+        <td style="background: #F0ADAD">
+          allNumbers.diff[Int](out.map[Int, List[Int]](((x$11: suduko.Number) =&gt; x$11.num.get))(immutable.this.List.canBuildFrom[Int])).toSet[Int]
+        </td>
+      </tr><tr>
+        <td>
+          33
+        </td>
+        <td>
+          52
+        </td>
+        <td>
+          1044
+          -
+          1053
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Option.get
+        </td>
+        <td style="background: #F0ADAD">
+          x$11.num.get
+        </td>
+      </tr><tr>
+        <td>
+          33
+        </td>
+        <td>
+          54
+        </td>
+        <td>
+          1036
+          -
+          1054
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          scala.collection.immutable.List.map
+        </td>
+        <td style="background: #F0ADAD">
+          out.map[Int, List[Int]](((x$11: suduko.Number) =&gt; x$11.num.get))(immutable.this.List.canBuildFrom[Int])
+        </td>
+      </tr><tr>
+        <td>
+          38
+        </td>
+        <td>
+          56
+        </td>
+        <td>
+          1184
+          -
+          1207
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.immutable.List.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.collection.immutable.List.apply[Int](1, 2, 3, 4, 5, 6, 7, 8, 9)
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          59
+        </td>
+        <td>
+          1292
+          -
+          1307
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Option.isDefined
+        </td>
+        <td style="background: #AEF1AE">
+          x$13.num.isDefined
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          58
+        </td>
+        <td>
+          1276
+          -
+          1276
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.collection.immutable.List.canBuildFrom
+        </td>
+        <td style="background: #AEF1AE">
+          immutable.this.List.canBuildFrom[suduko.Number]
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          60
+        </td>
+        <td>
+          1256
+          -
+          1308
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.TraversableLike.filter
+        </td>
+        <td style="background: #AEF1AE">
+          threeSquares.flatMap[suduko.Number, List[suduko.Number]](((x$12: suduko.Square) =&gt; x$12.left))(immutable.this.List.canBuildFrom[suduko.Number]).filter(((x$13: suduko.Number) =&gt; x$13.num.isDefined))
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          57
+        </td>
+        <td>
+          1277
+          -
+          1283
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          suduko.Square.left
+        </td>
+        <td style="background: #AEF1AE">
+          x$12.left
+        </td>
+      </tr><tr>
+        <td>
+          41
+        </td>
+        <td>
+          62
+        </td>
+        <td>
+          1340
+          -
+          1340
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.collection.immutable.List.canBuildFrom
+        </td>
+        <td style="background: #AEF1AE">
+          immutable.this.List.canBuildFrom[Int]
+        </td>
+      </tr><tr>
+        <td>
+          41
+        </td>
+        <td>
+          64
+        </td>
+        <td>
+          1317
+          -
+          1358
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.collection.TraversableOnce.toSet
+        </td>
+        <td style="background: #AEF1AE">
+          allNumbers.diff[Int](out.map[Int, List[Int]](((x$14: suduko.Number) =&gt; x$14.num.get))(immutable.this.List.canBuildFrom[Int])).toSet[Int]
+        </td>
+      </tr><tr>
+        <td>
+          41
+        </td>
+        <td>
+          61
+        </td>
+        <td>
+          1341
+          -
+          1350
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Option.get
+        </td>
+        <td style="background: #AEF1AE">
+          x$14.num.get
+        </td>
+      </tr><tr>
+        <td>
+          41
+        </td>
+        <td>
+          63
+        </td>
+        <td>
+          1333
+          -
+          1351
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          scala.collection.immutable.List.map
+        </td>
+        <td style="background: #AEF1AE">
+          out.map[Int, List[Int]](((x$14: suduko.Number) =&gt; x$14.num.get))(immutable.this.List.canBuildFrom[Int])
+        </td>
+      </tr><tr>
+        <td>
+          43
+        </td>
+        <td>
+          65
+        </td>
+        <td>
+          1414
+          -
+          1422
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          suduko.Square.centre
+        </td>
+        <td style="background: #AEF1AE">
+          x$15.centre
+        </td>
+      </tr><tr>
+        <td>
+          43
+        </td>
+        <td>
+          67
+        </td>
+        <td>
+          1393
+          -
+          1423
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          scala.collection.immutable.List.flatMap
+        </td>
+        <td style="background: #AEF1AE">
+          threeSquares.flatMap[suduko.Number, List[suduko.Number]](((x$15: suduko.Square) =&gt; x$15.centre))(immutable.this.List.canBuildFrom[suduko.Number])
+        </td>
+      </tr><tr>
+        <td>
+          43
+        </td>
+        <td>
+          66
+        </td>
+        <td>
+          1413
+          -
+          1413
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.collection.immutable.List.canBuildFrom
+        </td>
+        <td style="background: #AEF1AE">
+          immutable.this.List.canBuildFrom[suduko.Number]
+        </td>
+      </tr><tr>
+        <td>
+          44
+        </td>
+        <td>
+          68
+        </td>
+        <td>
+          1455
+          -
+          1470
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Option.isDefined
+        </td>
+        <td style="background: #AEF1AE">
+          x$16.num.isDefined
+        </td>
+      </tr><tr>
+        <td>
+          44
+        </td>
+        <td>
+          71
+        </td>
+        <td>
+          1444
+          -
+          1486
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          scala.collection.immutable.List.map
+        </td>
+        <td style="background: #AEF1AE">
+          out.filter(((x$16: suduko.Number) =&gt; x$16.num.isDefined)).map[Int, List[Int]](((x$17: suduko.Number) =&gt; x$17.num.get))(immutable.this.List.canBuildFrom[Int])
+        </td>
+      </tr><tr>
+        <td>
+          44
+        </td>
+        <td>
+          70
+        </td>
+        <td>
+          1475
+          -
+          1475
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.collection.immutable.List.canBuildFrom
+        </td>
+        <td style="background: #AEF1AE">
+          immutable.this.List.canBuildFrom[Int]
+        </td>
+      </tr><tr>
+        <td>
+          44
+        </td>
+        <td>
+          69
+        </td>
+        <td>
+          1476
+          -
+          1485
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Option.get
+        </td>
+        <td style="background: #AEF1AE">
+          x$17.num.get
+        </td>
+      </tr><tr>
+        <td>
+          45
+        </td>
+        <td>
+          72
+        </td>
+        <td>
+          1495
+          -
+          1523
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.collection.TraversableOnce.toSet
+        </td>
+        <td style="background: #AEF1AE">
+          allNumbers.diff[Int](outer).toSet[Int]
+        </td>
+      </tr><tr>
+        <td>
+          46
+        </td>
+        <td>
+          74
+        </td>
+        <td>
+          1570
+          -
+          1570
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.collection.immutable.List.canBuildFrom
+        </td>
+        <td style="background: #F0ADAD">
+          immutable.this.List.canBuildFrom[suduko.Number]
+        </td>
+      </tr><tr>
+        <td>
+          46
+        </td>
+        <td>
+          73
+        </td>
+        <td>
+          1571
+          -
+          1578
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          suduko.Square.right
+        </td>
+        <td style="background: #F0ADAD">
+          x$18.right
+        </td>
+      </tr><tr>
+        <td>
+          46
+        </td>
+        <td>
+          76
+        </td>
+        <td>
+          1550
+          -
+          1603
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.TraversableLike.filter
+        </td>
+        <td style="background: #F0ADAD">
+          threeSquares.flatMap[suduko.Number, List[suduko.Number]](((x$18: suduko.Square) =&gt; x$18.right))(immutable.this.List.canBuildFrom[suduko.Number]).filter(((x$19: suduko.Number) =&gt; x$19.num.isDefined))
+        </td>
+      </tr><tr>
+        <td>
+          46
+        </td>
+        <td>
+          75
+        </td>
+        <td>
+          1587
+          -
+          1602
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Option.isDefined
+        </td>
+        <td style="background: #F0ADAD">
+          x$19.num.isDefined
+        </td>
+      </tr><tr>
+        <td>
+          47
+        </td>
+        <td>
+          77
+        </td>
+        <td>
+          1636
+          -
+          1645
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Option.get
+        </td>
+        <td style="background: #F0ADAD">
+          x$20.num.get
+        </td>
+      </tr><tr>
+        <td>
+          47
+        </td>
+        <td>
+          80
+        </td>
+        <td>
+          1612
+          -
+          1653
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.collection.TraversableOnce.toSet
+        </td>
+        <td style="background: #F0ADAD">
+          allNumbers.diff[Int](out.map[Int, List[Int]](((x$20: suduko.Number) =&gt; x$20.num.get))(immutable.this.List.canBuildFrom[Int])).toSet[Int]
+        </td>
+      </tr><tr>
+        <td>
+          47
+        </td>
+        <td>
+          79
+        </td>
+        <td>
+          1628
+          -
+          1646
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          scala.collection.immutable.List.map
+        </td>
+        <td style="background: #F0ADAD">
+          out.map[Int, List[Int]](((x$20: suduko.Number) =&gt; x$20.num.get))(immutable.this.List.canBuildFrom[Int])
+        </td>
+      </tr><tr>
+        <td>
+          47
+        </td>
+        <td>
+          78
+        </td>
+        <td>
+          1635
+          -
+          1635
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.collection.immutable.List.canBuildFrom
+        </td>
+        <td style="background: #F0ADAD">
+          immutable.this.List.canBuildFrom[Int]
+        </td>
+      </tr><tr>
+        <td>
+          52
+        </td>
+        <td>
+          81
+        </td>
+        <td>
+          1779
+          -
+          1792
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.%
+        </td>
+        <td style="background: #AEF1AE">
+          squarePos.%(3)
+        </td>
+      </tr><tr>
+        <td>
+          53
+        </td>
+        <td>
+          83
+        </td>
+        <td>
+          1838
+          -
+          1853
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #AEF1AE">
+          grid.squares.apply(3)
+        </td>
+      </tr><tr>
+        <td>
+          53
+        </td>
+        <td>
+          82
+        </td>
+        <td>
+          1822
+          -
+          1837
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #AEF1AE">
+          grid.squares.apply(0)
+        </td>
+      </tr><tr>
+        <td>
+          53
+        </td>
+        <td>
+          85
+        </td>
+        <td>
+          1817
+          -
+          1870
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.immutable.List.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.collection.immutable.List.apply[suduko.Square](grid.squares.apply(0), grid.squares.apply(3), grid.squares.apply(6))
+        </td>
+      </tr><tr>
+        <td>
+          53
+        </td>
+        <td>
+          84
+        </td>
+        <td>
+          1854
+          -
+          1869
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #AEF1AE">
+          grid.squares.apply(6)
+        </td>
+      </tr><tr>
+        <td>
+          54
+        </td>
+        <td>
+          86
+        </td>
+        <td>
+          1892
+          -
+          1907
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #F0ADAD">
+          grid.squares.apply(1)
+        </td>
+      </tr><tr>
+        <td>
+          54
+        </td>
+        <td>
+          89
+        </td>
+        <td>
+          1887
+          -
+          1940
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.immutable.List.apply
+        </td>
+        <td style="background: #F0ADAD">
+          scala.collection.immutable.List.apply[suduko.Square](grid.squares.apply(1), grid.squares.apply(4), grid.squares.apply(7))
+        </td>
+      </tr><tr>
+        <td>
+          54
+        </td>
+        <td>
+          88
+        </td>
+        <td>
+          1924
+          -
+          1939
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #F0ADAD">
+          grid.squares.apply(7)
+        </td>
+      </tr><tr>
+        <td>
+          54
+        </td>
+        <td>
+          87
+        </td>
+        <td>
+          1908
+          -
+          1923
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #F0ADAD">
+          grid.squares.apply(4)
+        </td>
+      </tr><tr>
+        <td>
+          55
+        </td>
+        <td>
+          92
+        </td>
+        <td>
+          1994
+          -
+          2009
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #F0ADAD">
+          grid.squares.apply(8)
+        </td>
+      </tr><tr>
+        <td>
+          55
+        </td>
+        <td>
+          91
+        </td>
+        <td>
+          1978
+          -
+          1993
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #F0ADAD">
+          grid.squares.apply(5)
+        </td>
+      </tr><tr>
+        <td>
+          55
+        </td>
+        <td>
+          90
+        </td>
+        <td>
+          1962
+          -
+          1977
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #F0ADAD">
+          grid.squares.apply(2)
+        </td>
+      </tr><tr>
+        <td>
+          55
+        </td>
+        <td>
+          93
+        </td>
+        <td>
+          1957
+          -
+          2010
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.immutable.List.apply
+        </td>
+        <td style="background: #F0ADAD">
+          scala.collection.immutable.List.apply[suduko.Square](grid.squares.apply(2), grid.squares.apply(5), grid.squares.apply(8))
+        </td>
+      </tr><tr>
+        <td>
+          58
+        </td>
+        <td>
+          95
+        </td>
+        <td>
+          2094
+          -
+          2109
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #AEF1AE">
+          grid.squares.apply(0)
+        </td>
+      </tr><tr>
+        <td>
+          58
+        </td>
+        <td>
+          98
+        </td>
+        <td>
+          2089
+          -
+          2142
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.immutable.List.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.collection.immutable.List.apply[suduko.Square](grid.squares.apply(0), grid.squares.apply(1), grid.squares.apply(2))
+        </td>
+      </tr><tr>
+        <td>
+          58
+        </td>
+        <td>
+          94
+        </td>
+        <td>
+          2069
+          -
+          2082
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.&lt;
+        </td>
+        <td style="background: #AEF1AE">
+          squarePos.&lt;(3)
+        </td>
+      </tr><tr>
+        <td>
+          58
+        </td>
+        <td>
+          97
+        </td>
+        <td>
+          2126
+          -
+          2141
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #AEF1AE">
+          grid.squares.apply(2)
+        </td>
+      </tr><tr>
+        <td>
+          58
+        </td>
+        <td>
+          96
+        </td>
+        <td>
+          2110
+          -
+          2125
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #AEF1AE">
+          grid.squares.apply(1)
+        </td>
+      </tr><tr>
+        <td>
+          58
+        </td>
+        <td>
+          99
+        </td>
+        <td>
+          2089
+          -
+          2142
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          scala.collection.immutable.List.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.collection.immutable.List.apply[suduko.Square](grid.squares.apply(0), grid.squares.apply(1), grid.squares.apply(2))
+        </td>
+      </tr><tr>
+        <td>
+          59
+        </td>
+        <td>
+          101
+        </td>
+        <td>
+          2178
+          -
+          2193
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #F0ADAD">
+          grid.squares.apply(3)
+        </td>
+      </tr><tr>
+        <td>
+          59
+        </td>
+        <td>
+          104
+        </td>
+        <td>
+          2173
+          -
+          2226
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.immutable.List.apply
+        </td>
+        <td style="background: #F0ADAD">
+          scala.collection.immutable.List.apply[suduko.Square](grid.squares.apply(3), grid.squares.apply(4), grid.squares.apply(5))
+        </td>
+      </tr><tr>
+        <td>
+          59
+        </td>
+        <td>
+          100
+        </td>
+        <td>
+          2158
+          -
+          2171
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.&lt;
+        </td>
+        <td style="background: #F0ADAD">
+          squarePos.&lt;(6)
+        </td>
+      </tr><tr>
+        <td>
+          59
+        </td>
+        <td>
+          103
+        </td>
+        <td>
+          2210
+          -
+          2225
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #F0ADAD">
+          grid.squares.apply(5)
+        </td>
+      </tr><tr>
+        <td>
+          59
+        </td>
+        <td>
+          105
+        </td>
+        <td>
+          2173
+          -
+          2226
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          scala.collection.immutable.List.apply
+        </td>
+        <td style="background: #F0ADAD">
+          scala.collection.immutable.List.apply[suduko.Square](grid.squares.apply(3), grid.squares.apply(4), grid.squares.apply(5))
+        </td>
+      </tr><tr>
+        <td>
+          59
+        </td>
+        <td>
+          102
+        </td>
+        <td>
+          2194
+          -
+          2209
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #F0ADAD">
+          grid.squares.apply(4)
+        </td>
+      </tr><tr>
+        <td>
+          59
+        </td>
+        <td>
+          111
+        </td>
+        <td>
+          2154
+          -
+          2311
+        </td>
+        <td>
+          If
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          if (squarePos.&lt;(6))
+  scala.collection.immutable.List.apply[suduko.Square](grid.squares.apply(3), grid.squares.apply(4), grid.squares.apply(5))
+else
+  scala.collection.immutable.List.apply[suduko.Square](grid.squares.apply(6), grid.squares.apply(7), grid.squares.apply(8))
+        </td>
+      </tr><tr>
+        <td>
+          60
+        </td>
+        <td>
+          110
+        </td>
+        <td>
+          2258
+          -
+          2311
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          scala.collection.immutable.List.apply
+        </td>
+        <td style="background: #F0ADAD">
+          scala.collection.immutable.List.apply[suduko.Square](grid.squares.apply(6), grid.squares.apply(7), grid.squares.apply(8))
+        </td>
+      </tr><tr>
+        <td>
+          60
+        </td>
+        <td>
+          107
+        </td>
+        <td>
+          2279
+          -
+          2294
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #F0ADAD">
+          grid.squares.apply(7)
+        </td>
+      </tr><tr>
+        <td>
+          60
+        </td>
+        <td>
+          106
+        </td>
+        <td>
+          2263
+          -
+          2278
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #F0ADAD">
+          grid.squares.apply(6)
+        </td>
+      </tr><tr>
+        <td>
+          60
+        </td>
+        <td>
+          109
+        </td>
+        <td>
+          2258
+          -
+          2311
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.immutable.List.apply
+        </td>
+        <td style="background: #F0ADAD">
+          scala.collection.immutable.List.apply[suduko.Square](grid.squares.apply(6), grid.squares.apply(7), grid.squares.apply(8))
+        </td>
+      </tr><tr>
+        <td>
+          60
+        </td>
+        <td>
+          108
+        </td>
+        <td>
+          2295
+          -
+          2310
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #F0ADAD">
+          grid.squares.apply(8)
+        </td>
+      </tr><tr>
+        <td>
+          63
+        </td>
+        <td>
+          113
+        </td>
+        <td>
+          2362
+          -
+          2363
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          0
+        </td>
+      </tr><tr>
+        <td>
+          63
+        </td>
+        <td>
+          112
+        </td>
+        <td>
+          2347
+          -
+          2360
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.&lt;
+        </td>
+        <td style="background: #AEF1AE">
+          numberPos.&lt;(3)
+        </td>
+      </tr><tr>
+        <td>
+          63
+        </td>
+        <td>
+          114
+        </td>
+        <td>
+          2362
+          -
+          2363
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          0
+        </td>
+      </tr><tr>
+        <td>
+          64
+        </td>
+        <td>
+          116
+        </td>
+        <td>
+          2395
+          -
+          2396
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          1
+        </td>
+      </tr><tr>
+        <td>
+          64
+        </td>
+        <td>
+          115
+        </td>
+        <td>
+          2380
+          -
+          2393
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.&lt;
+        </td>
+        <td style="background: #AEF1AE">
+          numberPos.&lt;(6)
+        </td>
+      </tr><tr>
+        <td>
+          64
+        </td>
+        <td>
+          120
+        </td>
+        <td>
+          2376
+          -
+          2412
+        </td>
+        <td>
+          If
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          if (numberPos.&lt;(6))
+  1
+else
+  2
+        </td>
+      </tr><tr>
+        <td>
+          64
+        </td>
+        <td>
+          117
+        </td>
+        <td>
+          2395
+          -
+          2396
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          1
+        </td>
+      </tr><tr>
+        <td>
+          65
+        </td>
+        <td>
+          119
+        </td>
+        <td>
+          2410
+          -
+          2411
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          2
+        </td>
+      </tr><tr>
+        <td>
+          65
+        </td>
+        <td>
+          118
+        </td>
+        <td>
+          2410
+          -
+          2411
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          2
+        </td>
+      </tr><tr>
+        <td>
+          67
+        </td>
+        <td>
+          122
+        </td>
+        <td>
+          2439
+          -
+          2493
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          suduko.SudukoSolver.missingNumberFromSquareFinder
+        </td>
+        <td style="background: #AEF1AE">
+          SudukoSolver.this.missingNumberFromSquareFinder(grid.squares.apply(squarePos))
+        </td>
+      </tr><tr>
+        <td>
+          67
+        </td>
+        <td>
+          121
+        </td>
+        <td>
+          2469
+          -
+          2492
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #AEF1AE">
+          grid.squares.apply(squarePos)
+        </td>
+      </tr><tr>
+        <td>
+          68
+        </td>
+        <td>
+          124
+        </td>
+        <td>
+          2514
+          -
+          2569
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          suduko.SudukoSolver.missingNumbersFromColumn
+        </td>
+        <td style="background: #AEF1AE">
+          SudukoSolver.this.missingNumbersFromColumn(columnThreeSquare, numberPos.%(3))
+        </td>
+      </tr><tr>
+        <td>
+          68
+        </td>
+        <td>
+          123
+        </td>
+        <td>
+          2557
+          -
+          2568
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.%
+        </td>
+        <td style="background: #AEF1AE">
+          numberPos.%(3)
+        </td>
+      </tr><tr>
+        <td>
+          69
+        </td>
+        <td>
+          125
+        </td>
+        <td>
+          2587
+          -
+          2631
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          suduko.SudukoSolver.missingNumbersFromRow
+        </td>
+        <td style="background: #AEF1AE">
+          SudukoSolver.this.missingNumbersFromRow(rowThreeSquare, rowPos)
+        </td>
+      </tr><tr>
+        <td>
+          70
+        </td>
+        <td>
+          126
+        </td>
+        <td>
+          2636
+          -
+          2684
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.GenSetLike.intersect
+        </td>
+        <td style="background: #AEF1AE">
+          squareSet.intersect(columnSet).intersect(rowSet)
+        </td>
+      </tr><tr>
+        <td>
+          73
+        </td>
+        <td>
+          127
+        </td>
+        <td>
+          2708
+          -
+          2711
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Predef.???
+        </td>
+        <td style="background: #F0ADAD">
+          scala.Predef.???
+        </td>
+      </tr><tr>
+        <td>
+          75
+        </td>
+        <td>
+          128
+        </td>
+        <td>
+          2732
+          -
+          2735
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Predef.???
+        </td>
+        <td style="background: #F0ADAD">
+          scala.Predef.???
+        </td>
+      </tr>
+    </table>
+          </div>
+        </div>
+      </body>
+    </html>

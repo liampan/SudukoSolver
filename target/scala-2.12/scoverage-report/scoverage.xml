@@ -1,0 +1,466 @@
+<scoverage 
+statement-count="128" statements-invoked="72" statement-rate="56.25" branch-rate="37.50" version="1.0" timestamp="1524239189101">
+    <packages>
+        <package name="suduko" statement-count="128" statements-invoked="72" statement-rate="56.25">
+            <classes>
+                <class 
+                name="suduko.Square" filename="suduko/Square.scala" statement-count="15" statements-invoked="9" statement-rate="60.00" branch-rate="100.00">
+                    <methods>
+                        <method name="suduko/Square/top" statement-count="1" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                            <statements>
+                                <statement 
+                                package="suduko" class="Square" class-type="Class" full-class-name="suduko.Square" source="/home/Solve/src/main/scala/suduko/Square.scala" method="top" start="343" end="363" line="10" branch="false" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+                        </method>
+                        <method 
+                        name="suduko/Square/bottom" statement-count="1" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                            <statements>
+                                <statement 
+                                package="suduko" class="Square" class-type="Class" full-class-name="suduko.Square" source="/home/Solve/src/main/scala/suduko/Square.scala" method="bottom" start="450" end="475" line="12" branch="false" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="suduko/Square/left" statement-count="4" statements-invoked="4" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="suduko" class="Square" class-type="Class" full-class-name="suduko.Square" source="/home/Solve/src/main/scala/suduko/Square.scala" method="left" start="110" end="125" line="6" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="Square" class-type="Class" full-class-name="suduko.Square" source="/home/Solve/src/main/scala/suduko/Square.scala" method="left" start="88" end="143" line="6" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="Square" class-type="Class" full-class-name="suduko.Square" source="/home/Solve/src/main/scala/suduko/Square.scala" method="left" start="93" end="108" line="6" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="Square" class-type="Class" full-class-name="suduko.Square" source="/home/Solve/src/main/scala/suduko/Square.scala" method="left" start="127" end="142" line="6" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method name="suduko/Square/right" statement-count="4" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                            <statements>
+                                <statement 
+                                package="suduko" class="Square" class-type="Class" full-class-name="suduko.Square" source="/home/Solve/src/main/scala/suduko/Square.scala" method="right" start="297" end="312" line="8" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="Square" class-type="Class" full-class-name="suduko.Square" source="/home/Solve/src/main/scala/suduko/Square.scala" method="right" start="281" end="296" line="8" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="Square" class-type="Class" full-class-name="suduko.Square" source="/home/Solve/src/main/scala/suduko/Square.scala" method="right" start="264" end="279" line="8" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="Square" class-type="Class" full-class-name="suduko.Square" source="/home/Solve/src/main/scala/suduko/Square.scala" method="right" start="259" end="313" line="8" branch="false" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+                        </method>
+                        <method 
+                        name="suduko/Square/middle" statement-count="1" statements-invoked="1" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="suduko" class="Square" class-type="Class" full-class-name="suduko.Square" source="/home/Solve/src/main/scala/suduko/Square.scala" method="middle" start="395" end="418" line="11" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="suduko/Square/centre" statement-count="4" statements-invoked="4" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="suduko" class="Square" class-type="Class" full-class-name="suduko.Square" source="/home/Solve/src/main/scala/suduko/Square.scala" method="centre" start="175" end="228" line="7" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="Square" class-type="Class" full-class-name="suduko.Square" source="/home/Solve/src/main/scala/suduko/Square.scala" method="centre" start="180" end="195" line="7" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="Square" class-type="Class" full-class-name="suduko.Square" source="/home/Solve/src/main/scala/suduko/Square.scala" method="centre" start="212" end="227" line="7" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="Square" class-type="Class" full-class-name="suduko.Square" source="/home/Solve/src/main/scala/suduko/Square.scala" method="centre" start="196" end="211" line="7" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                    </methods>
+</class>
+                <class 
+                name="suduko.SudukoSolver" filename="suduko/SudukoSolver.scala" statement-count="113" statements-invoked="63" statement-rate="55.75" branch-rate="37.50">
+                    <methods>
+                        <method 
+                        name="suduko/SudukoSolver/missingNumbersFromRow" statement-count="25" statements-invoked="9" statement-rate="36.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromRow" start="995" end="1010" line="32" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromRow" start="846" end="846" line="30" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromRow" start="719" end="724" line="28" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromRow" start="1043" end="1043" line="33" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromRow" start="698" end="749" line="28" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromRow" start="913" end="922" line="31" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromRow" start="774" end="792" line="29" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromRow" start="889" end="930" line="31" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromRow" start="905" end="923" line="31" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromRow" start="1020" end="1061" line="33" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromRow" start="977" end="977" line="32" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromRow" start="847" end="855" line="30" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromRow" start="629" end="652" line="26" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromRow" start="826" end="880" line="30" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromRow" start="1044" end="1053" line="33" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromRow" start="733" end="748" line="28" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromRow" start="781" end="781" line="29" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromRow" start="1036" end="1054" line="33" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromRow" start="912" end="912" line="31" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromRow" start="782" end="791" line="29" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromRow" start="978" end="986" line="32" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromRow" start="758" end="799" line="29" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromRow" start="864" end="879" line="30" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromRow" start="957" end="1011" line="32" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromRow" start="718" end="718" line="28" branch="false" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="suduko/SudukoSolver/parser" statement-count="1" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                            <statements>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="parser" start="2732" end="2735" line="75" branch="false" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="suduko/SudukoSolver/missingNumberFromSquareFinder" statement-count="8" statements-invoked="8" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumberFromSquareFinder" start="358" end="373" line="19" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumberFromSquareFinder" start="480" end="489" line="21" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumberFromSquareFinder" start="447" end="491" line="21" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumberFromSquareFinder" start="396" end="419" line="20" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumberFromSquareFinder" start="463" end="490" line="21" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumberFromSquareFinder" start="479" end="479" line="21" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumberFromSquareFinder" start="496" end="518" line="22" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumberFromSquareFinder" start="331" end="374" line="19" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="suduko/SudukoSolver/missingNumbersFromColumn" statement-count="25" statements-invoked="17" statement-rate="68.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromColumn" start="1636" end="1645" line="47" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromColumn" start="1292" end="1307" line="40" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromColumn" start="1455" end="1470" line="44" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromColumn" start="1340" end="1340" line="41" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromColumn" start="1612" end="1653" line="47" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromColumn" start="1444" end="1486" line="44" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromColumn" start="1570" end="1570" line="46" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromColumn" start="1184" end="1207" line="38" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromColumn" start="1414" end="1422" line="43" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromColumn" start="1317" end="1358" line="41" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromColumn" start="1571" end="1578" line="46" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromColumn" start="1276" end="1276" line="40" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromColumn" start="1393" end="1423" line="43" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromColumn" start="1550" end="1603" line="46" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromColumn" start="1628" end="1646" line="47" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromColumn" start="1475" end="1475" line="44" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromColumn" start="1341" end="1350" line="41" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromColumn" start="1256" end="1308" line="40" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromColumn" start="1476" end="1485" line="44" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromColumn" start="1635" end="1635" line="47" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromColumn" start="1333" end="1351" line="41" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromColumn" start="1495" end="1523" line="45" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromColumn" start="1277" end="1283" line="40" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromColumn" start="1587" end="1602" line="46" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="missingNumbersFromColumn" start="1413" end="1413" line="43" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="suduko/SudukoSolver/vennDiagramForCell" statement-count="46" statements-invoked="22" statement-rate="47.83" branch-rate="37.50">
+                            <statements>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="1994" end="2009" line="55" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2178" end="2193" line="59" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="1838" end="1853" line="53" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2258" end="2311" line="60" branch="true" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2410" end="2411" line="65" branch="true" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2094" end="2109" line="58" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2173" end="2226" line="59" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2439" end="2493" line="67" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="1892" end="1907" line="54" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2362" end="2363" line="63" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2587" end="2631" line="69" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="1887" end="1940" line="54" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2395" end="2396" line="64" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2089" end="2142" line="58" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2279" end="2294" line="60" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2514" end="2569" line="68" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2263" end="2278" line="60" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2380" end="2393" line="64" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2410" end="2411" line="65" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2158" end="2171" line="59" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2258" end="2311" line="60" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="1822" end="1837" line="53" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="1978" end="1993" line="55" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="1817" end="1870" line="53" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2069" end="2082" line="58" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2469" end="2492" line="67" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2210" end="2225" line="59" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2347" end="2360" line="63" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2126" end="2141" line="58" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="1924" end="1939" line="54" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2376" end="2412" line="64" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="1908" end="1923" line="54" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2110" end="2125" line="58" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2173" end="2226" line="59" branch="true" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2557" end="2568" line="68" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2362" end="2363" line="63" branch="true" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="1962" end="1977" line="55" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2089" end="2142" line="58" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="1779" end="1792" line="52" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2636" end="2684" line="70" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2295" end="2310" line="60" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2395" end="2396" line="64" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="1854" end="1869" line="53" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="1957" end="2010" line="55" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2194" end="2209" line="59" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="vennDiagramForCell" start="2154" end="2311" line="59" branch="true" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="suduko/SudukoSolver/placer" statement-count="1" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                            <statements>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="placer" start="2708" end="2711" line="73" branch="false" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="suduko/SudukoSolver/findEmptyCell" statement-count="7" statements-invoked="7" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="findEmptyCell" start="215" end="219" line="14" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="findEmptyCell" start="233" end="237" line="15" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="findEmptyCell" start="140" end="238" line="15" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="findEmptyCell" start="169" end="169" line="13" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="findEmptyCell" start="201" end="220" line="14" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="findEmptyCell" start="208" end="220" line="14" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="suduko" class="SudukoSolver" class-type="Object" full-class-name="suduko.SudukoSolver" source="/home/Solve/src/main/scala/suduko/SudukoSolver.scala" method="findEmptyCell" start="232" end="232" line="15" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                    </methods>
+</class>
+            </classes>
+        </package>
+    </packages>
+</scoverage>

@@ -1,0 +1,371 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title id="title">
+          suduko/Square.scala.html
+        </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/css/theme.default.min.css" type="text/css"/><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/js/jquery.tablesorter.min.js"></script><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" type="text/css"/><script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script><script type="text/javascript">
+        $(document).ready(function() {$(".tablesorter").tablesorter();});
+      </script>
+        <style>
+          table.codegrid { font-family: monospace; font-size: 12px; width: auto!important; }table.statementlist { width: auto!important; font-size: 13px; } table.codegrid td { padding: 0!important; border: 0!important } table td.linenumber { width: 40px!important; } 
+        </style>
+      </head>
+      <body style="font-family: monospace;">
+        <ul class="nav nav-tabs">
+          <li>
+            <a href="#codegrid" data-toggle="tab">Codegrid</a>
+          </li>
+          <li>
+            <a href="#statementlist" data-toggle="tab">Statement List</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="codegrid">
+            <pre style='font-size: 12pt; font-family: courier;'>1 <span style=''>package suduko
+</span>2 <span style=''>
+</span>3 <span style=''>case class Square(numbers : List[Number]){
+</span>4 <span style=''>
+</span>5 <span style=''>
+</span>6 <span style=''>  def left :List[Number] ={</span><span style='background: #AEF1AE'>List(this.numbers(0), this.numbers(3), this.numbers(6))</span><span style=''>}
+</span>7 <span style=''>  def centre :List[Number] ={ </span><span style='background: #AEF1AE'>List(this.numbers(1),this.numbers(4),this.numbers(7))</span><span style=''>}
+</span>8 <span style=''>  def right :List[Number] ={ </span><span style='background: #F0ADAD'>List(this.numbers(2), this.numbers(5),this.numbers(8))</span><span style=''>}
+</span>9 <span style=''>
+</span>10 <span style=''>  def top :List[Number] ={ </span><span style='background: #F0ADAD'>this.numbers.take(3)</span><span style=''>}
+</span>11 <span style=''>  def middle :List[Number] ={ </span><span style='background: #AEF1AE'>this.numbers.slice(3,6)</span><span style=''>}
+</span>12 <span style=''>  def bottom :List[Number] ={ </span><span style='background: #F0ADAD'>this.numbers.takeRight(3)</span><span style=''>}
+</span>13 <span style=''>
+</span>14 <span style=''>
+</span>15 <span style=''>}
+</span></pre>
+          </div>
+          <div class="tab-pane" id="statementlist">
+            <table cellspacing="0" cellpadding="0" class="table statementlist">
+      <tr>
+        <th>Line</th>
+        <th>Stmt Id</th>
+        <th>Pos</th>
+        <th>Tree</th>
+        <th>Symbol</th>
+        <th>Code</th>
+      </tr><tr>
+        <td>
+          6
+        </td>
+        <td>
+          2
+        </td>
+        <td>
+          110
+          -
+          125
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #AEF1AE">
+          this.numbers.apply(3)
+        </td>
+      </tr><tr>
+        <td>
+          6
+        </td>
+        <td>
+          4
+        </td>
+        <td>
+          88
+          -
+          143
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.immutable.List.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.collection.immutable.List.apply[suduko.Number](this.numbers.apply(0), this.numbers.apply(3), this.numbers.apply(6))
+        </td>
+      </tr><tr>
+        <td>
+          6
+        </td>
+        <td>
+          1
+        </td>
+        <td>
+          93
+          -
+          108
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #AEF1AE">
+          this.numbers.apply(0)
+        </td>
+      </tr><tr>
+        <td>
+          6
+        </td>
+        <td>
+          3
+        </td>
+        <td>
+          127
+          -
+          142
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #AEF1AE">
+          this.numbers.apply(6)
+        </td>
+      </tr><tr>
+        <td>
+          7
+        </td>
+        <td>
+          8
+        </td>
+        <td>
+          175
+          -
+          228
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.immutable.List.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.collection.immutable.List.apply[suduko.Number](this.numbers.apply(1), this.numbers.apply(4), this.numbers.apply(7))
+        </td>
+      </tr><tr>
+        <td>
+          7
+        </td>
+        <td>
+          5
+        </td>
+        <td>
+          180
+          -
+          195
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #AEF1AE">
+          this.numbers.apply(1)
+        </td>
+      </tr><tr>
+        <td>
+          7
+        </td>
+        <td>
+          7
+        </td>
+        <td>
+          212
+          -
+          227
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #AEF1AE">
+          this.numbers.apply(7)
+        </td>
+      </tr><tr>
+        <td>
+          7
+        </td>
+        <td>
+          6
+        </td>
+        <td>
+          196
+          -
+          211
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #AEF1AE">
+          this.numbers.apply(4)
+        </td>
+      </tr><tr>
+        <td>
+          8
+        </td>
+        <td>
+          11
+        </td>
+        <td>
+          297
+          -
+          312
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #F0ADAD">
+          this.numbers.apply(8)
+        </td>
+      </tr><tr>
+        <td>
+          8
+        </td>
+        <td>
+          10
+        </td>
+        <td>
+          281
+          -
+          296
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #F0ADAD">
+          this.numbers.apply(5)
+        </td>
+      </tr><tr>
+        <td>
+          8
+        </td>
+        <td>
+          9
+        </td>
+        <td>
+          264
+          -
+          279
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.LinearSeqOptimized.apply
+        </td>
+        <td style="background: #F0ADAD">
+          this.numbers.apply(2)
+        </td>
+      </tr><tr>
+        <td>
+          8
+        </td>
+        <td>
+          12
+        </td>
+        <td>
+          259
+          -
+          313
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.immutable.List.apply
+        </td>
+        <td style="background: #F0ADAD">
+          scala.collection.immutable.List.apply[suduko.Number](this.numbers.apply(2), this.numbers.apply(5), this.numbers.apply(8))
+        </td>
+      </tr><tr>
+        <td>
+          10
+        </td>
+        <td>
+          13
+        </td>
+        <td>
+          343
+          -
+          363
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.immutable.List.take
+        </td>
+        <td style="background: #F0ADAD">
+          this.numbers.take(3)
+        </td>
+      </tr><tr>
+        <td>
+          11
+        </td>
+        <td>
+          14
+        </td>
+        <td>
+          395
+          -
+          418
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.immutable.List.slice
+        </td>
+        <td style="background: #AEF1AE">
+          this.numbers.slice(3, 6)
+        </td>
+      </tr><tr>
+        <td>
+          12
+        </td>
+        <td>
+          15
+        </td>
+        <td>
+          450
+          -
+          475
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.immutable.List.takeRight
+        </td>
+        <td style="background: #F0ADAD">
+          this.numbers.takeRight(3)
+        </td>
+      </tr>
+    </table>
+          </div>
+        </div>
+      </body>
+    </html>

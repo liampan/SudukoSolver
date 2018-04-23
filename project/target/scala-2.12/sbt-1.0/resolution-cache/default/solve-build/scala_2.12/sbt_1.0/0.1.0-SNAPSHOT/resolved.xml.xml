@@ -4,7 +4,7 @@
 		module="solve-build"
 		revision="0.1.0-SNAPSHOT"
 		status="integration"
-		publication="20180419131255"
+		publication="20180420161447"
 		e:sbtVersion="1.0" e:scalaVersion="2.12"
 	>
 		<description>
@@ -34,5 +34,6 @@
 		<dependency org="org.scala-lang" name="scala-compiler" rev="2.12.4" conf="scala-tool->default,optional(default)"/>
 		<dependency org="org.scala-lang" name="scala-library" rev="2.12.4" conf="scala-tool->default,optional(default);provided->default(compile)"/>
 		<dependency org="org.scala-sbt" name="sbt" rev="1.1.4" conf="provided->default(compile)"/>
+		<dependency org="org.scoverage" name="sbt-scoverage" rev="1.5.1" conf="compile->default(compile)" e:sbtVersion="1.0" e:scalaVersion="2.12"/>
 	</dependencies>
 </ivy-module>

@@ -4,7 +4,7 @@
 		module="solve_2.12"
 		revision="0.1"
 		status="integration"
-		publication="20180419131556"
+		publication="20180420164627"
 	>
 		<description>
 		Solve
@@ -22,6 +22,7 @@
 		<conf name="plugin" visibility="private" description=""/>
 		<conf name="pom" visibility="public" description=""/>
 		<conf name="scala-tool" visibility="private" description=""/>
+		<conf name="scoveragePlugin" visibility="private" description=""/>
 	</configurations>
 	<publications>
 		<artifact name="solve_2.12" type="pom" ext="pom" conf="pom"/>
